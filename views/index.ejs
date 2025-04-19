@@ -25,10 +25,9 @@
 
     .container {
   display: flex;
-
   flex-direction: column;
   align-items: center;
-justify-content: flex-start;
+  justify-content: flex-start;
   padding: 60px 80px;
   border: 8px solid #fff;
   border-radius: 30px;
@@ -38,13 +37,11 @@ justify-content: flex-start;
   max-width: 90%;
   width: 700px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  position: absolute; /* Positions it relative to the nearest positioned ancestor */
-  top: 5%; /* Moves the container down slightly */
+  position: absolute;
+  top: 5%;
   left: 50%;
-  transform: translateX(-50%); /* Ensures the container is horizontally centered */
+  transform: translateX(-50%);
 }
-
-
     h1 {
       font-size: 3.5rem;
       color: #fff;
@@ -209,12 +206,20 @@ justify-content: flex-start;
       }
 
       
-
-      .container {
-        padding: 40px 60px;
-        width: 90%;
-        max-width: 90%;
-      }
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    width: 90%; /* Adjust the width to 90% of the screen */
+    padding: 20px; /* Reduce padding for smaller screens */
+    border-radius: 15px; /* Adjust border radius */
+  }
+}
+@media (max-width: 480px) {
+  .container {
+    width: 95%; /* Further adjust for very small screens */
+    padding: 15px;
+  }
+}
     }
   </style>
 </head>
@@ -368,7 +373,6 @@ setInterval(createShootingStar, 3000);
 
 
 
-  </script>
 
 </body>
 </html>
