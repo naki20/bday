@@ -53,8 +53,7 @@
     }
 
     #special-day-message {
-  font-size: 3.6rem; /* or whatever size "The countdown begins" is */
-  font-size: 3.9rem; /* or whatever size "The countdown begins" is */
+  font-size: 3rem; /* or whatever size "The countdown begins" is */
   font-weight: 600;
   color: #fff;
   text-align: center;
@@ -62,7 +61,7 @@
 }
 
     #countdown {
-      font-size: 5rem;
+      font-size: 4rem;
       font-weight: 500;
       color: #fff;
       text-align: center;
@@ -86,23 +85,7 @@
       animation: twinkle 5s infinite ease-in-out;
       opacity: 0.8;
     }
-    .moon, .planet {
-  position: absolute;
-  border-radius: 50%;
-  box-shadow: 0 0 30px rgba(255, 255, 224, 0.4);
-  z-index: 2;
-  transition: transform 5s ease-in-out;
-}
-
-.planet {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fff5e1, #ca3232);
-  box-shadow: inset -8px -8px 15px rgba(0, 0, 0, 0.4),
-              0 0 25px rgba(255, 255, 255, 0.1);
-  animation: floatPlanet 6s ease-in-out infinite;
-  z-index: 2;
-}
+ 
 
 
 
@@ -284,7 +267,7 @@ setInterval(createShootingStar, 3000);
     const countdownContainer = document.getElementById("countdownContainer");
     const specialMessage = document.getElementById("special-day-message");
   
-    const birthday = new Date(2025, 3, 20, 0, 12, 0).getTime(); // 19 April 2025, 17:29
+    const birthday = new Date(2025, 3, 20, 0, 16, 0).getTime(); // 19 April 2025, 17:29
   
     // Check immediately if the special day has already passed
     const now = new Date().getTime();
