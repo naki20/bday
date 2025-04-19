@@ -56,7 +56,7 @@
       animation: pulse 2s infinite;
       width: 100%;
       margin-bottom: 2rem;
-      text-shadow: 0 0 10px #8e7586, 0 0 20px #3d23c2;
+      text-shadow: 0 0 10px #433434, 0 0 20px #bd1616;
     }
 
     @keyframes pulse {
@@ -185,9 +185,9 @@
       
         <H2><center>Here’s to the sweetest, kindest, and most lovely soul I’ve ever met — YOU.</center></H2>
         <br>  
-        <h3>Another year older, another year wiser, and somehow, even more beautiful than ever.
+        <h3>Another year older, another year wiser, and somehow, even more wonderful than ever.
         
-        I still remember how unexpectedly everything began… how I fell for your smile, your heart, and the way you made me feel like I was home. We didn’t plan this — we didn’t see it coming — but I truly believe God knew exactly what he was doing. He brought us together because He knew we needed each other to write the love story He had already begun.
+        I still remember how unexpectedly everything began… how I fell for you, your heart, and the way you made me feel like I was home. We didn’t plan this — we didn’t see it coming — but I truly believe God knew exactly what he was doing. He brought us together because He knew we needed each other to write the love story He had already begun.
         
         Thank you, my love, for being my best friend, my safe place, and my little sunshine all in one.  
         Thank you for showing me what real love is, for reminding me I’m worthy of happiness, and for always being there — even on the days when I don’t feel like myself.
@@ -200,9 +200,9 @@
         <h2><br><CENTER>A VERY HAPPY BIRTHDAY TO YOU MY LITTLE BUG 🐞</CENTER><h2>
         I'm grateful to you more than words could ever explain. And in case you forgot…
         
-        You already have the best gift ever — ME ⸜(｡˃ ᵕ ˂ )⸝♡ .Therefore,I might have to skip on this one (☞ ͡° ͜ʖ ͡°)☞🎁😏.<br>See you soon and May God shower his blessings upon you.
+        You already have the best gift ever — ME ⸜(｡˃ ᵕ ˂ )⸝♡ .Therefore,I might have to skip on this one    (☞ ͡° ͜ʖ ͡°)☞🎁😏.<br>See you soon and May God shower his blessings upon you.
         
-        <h2><br><center>----  I love you always ⋆💌ִֶָ⋆｡‧˚ʚ🧸ɞ˚‧｡⋆❤️ྀི  ----<center></h2>
+        <h2><br><center>----  I love you always ⋆💌ִֶָ⋆｡‧˚ʚ🧸ɞ˚‧｡⋆❤️ྀི  ----</center></h2>
         
         
       </p>
@@ -214,14 +214,14 @@
       <button onclick="goNext()" style="
         padding: 1rem 2rem;
         font-size: 1.2rem;
-        background-color: #8e44ad;
+        background-color: #000000;
         color: white;
         border: none;
         border-radius: 1rem;
         cursor: pointer;
-        box-shadow: 0 0 10px #8e44ad;
+        box-shadow: 0 0 10px #852364;
       ">
-        Next →
+        ╰┈➤
       </button>
     </div>
   
@@ -238,6 +238,12 @@
   // Redirect to the next page (you can change this URL)
   window.location.href = "/stickers";  // Replace with your actual next page route
 }
+ // Redirect to index if page is refreshed
+ window.onload = function () {
+  const navigationEntries = performance.getEntriesByType("navigation");
+  if (navigationEntries.length > 0 && navigationEntries[0].type === "reload") {
+    window.location.href = "/";
+  }
 
 
     // Function to start the confetti animation
@@ -261,10 +267,7 @@
       console.log("Confetti animation triggered!");  // Added log
     }
 
-    // Trigger confetti when the page is loaded
-    window.onload = function() {
-      // Start confetti animation
-      startConfetti();
+   
 
       // Play the birthday audio
       playAudio();

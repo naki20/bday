@@ -58,15 +58,24 @@
       margin-top: 100px;
     }
   </style>
+
+  <script>
+    // Check if the page is being refreshed
+    window.onload = function () {
+      if (performance.navigation.type == 1) {
+        window.location.href = "/";  // Redirect to the index page when reloaded
+      }
+    };
+  </script>
+
 </head>
 <body>
   <div class="content-container">
-    <h1>Have a good one🍹😂❤</h1>
+    <h1>Have a good one<br> ≧ᗜ≦  ♡</h1>
     <div class="image-container">
       <img src="images/hehe.jpeg" alt=" LOL" class="small-img">
       <img src="images/ches.jpeg" alt="Cheesy">
     </div>
-       
   </div>
 
 </body>
