@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chester's Birthday Countdown</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(45deg, #000000, #000000);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+justify-content: flex-start;
+  padding: 60px 80px;
+  border: 8px solid #fff;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  animation: fadeInContainer 4s ease-out forwards;
+  max-width: 90%;
+  width: 700px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  position: absolute; /* Positions it relative to the nearest positioned ancestor */
+  top: 16%; /* Moves the container down slightly */
+  left: 50%;
+  transform: translateX(-50%); /* Ensures the container is horizontally centered */
+}
+
+
+    h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
+      margin-bottom: 25px;
+      opacity: 0.9;
+      animation: fadeInText 4s ease-out forwards;
+      text-align: center;
+    }
+
+    #special-day-message {
+  font-size: 3.9rem; /* or whatever size "The countdown begins" is */
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+    #countdown {
+      font-size: 5rem;
+      font-weight: 500;
+      color: #fff;
+      text-align: center;
+      min-height: 150px; /* or whatever is suitable */
+      letter-spacing: 2px;
+      text-shadow: 0 0 25px rgba(97, 89, 89, 0.6), 0 0 40px rgba(255, 255, 255, 0.4);
+      opacity: 0;
+      
+      animation: countdownAnimation 2s ease-out 3s forwards, popInOut 1.5s infinite;
+    }
+
+    
+
+    .sparkle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #fff;
+      animation: twinkle 5s infinite ease-in-out;
+      opacity: 0.8;
+    }
+    .moon, .planet {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(255, 255, 224, 0.4);
+  z-index: 2;
+  transition: transform 5s ease-in-out;
+}
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff5e1, #ca3232);
+  box-shadow: inset -8px -8px 15px rgba(0, 0, 0, 0.4),
+              0 0 25px rgba(255, 255, 255, 0.1);
+  animation: floatPlanet 6s ease-in-out infinite;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.shooting-star {
+  position: absolute;
+  top: -600px; /* Start off-screen at the top */
+  left: -100px;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, white, transparent);
+  opacity: 1;
+  transform: rotate(45deg);
+  animation: shoot-diagonal 5s linear forwards;
+  z-index: 3;
+}
+
+
+@keyframes shoot-diagonal {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(800px, 1000px) rotate(45deg); /* move to bottom right */
+    opacity: 0;
+  }
+}
+
+
+.star {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #fff;
+  animation: twinkle 6s infinite ease-in-out;
+  z-index: 0;
+}
+.photo {
+      position: absolute;
+      bottom: 20px;  /* Adjust as per your need */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;  /* Adjust image size */
+      height: auto;
+      z-index: -1;  /* To ensure it's behind other content */
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    @keyframes fadeInContainer {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInText {
+      0% { opacity: 1; }
+      80% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes countdownAnimation {
+      0% { transform: scale(0.8); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes popInOut {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      
+
+      .container {
+        padding: 40px 60px;
+        width: 90%;
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+  <img src="images/meyou.jpeg" alt="Birthday Image" class="photo" />
+
+  <div class="container" id="countdownContainer">
+    <h1 id="countdownMessage">The Countdown begins...</h1>
+    
+    <div id="countdown"></div>
+    <div id="special-day-message" style="display: none;"></div>
+  </div>
+  
+
+  <script>
+    // 🌟 Create twinkling sparkles
+    for (let i = 0; i < 30; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(sparkle);
+    }
+
+
+
+
+// ✨ Add stars
+for (let i = 0; i < 40; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.left = Math.random() * 100 + 'vw';
+  star.style.top = Math.random() * 100 + 'vh';
+  star.style.animationDelay = `${Math.random() * 6}s`;
+  star.style.opacity = Math.random();
+  document.body.appendChild(star);
+}
+
+const countdownEl = document.getElementById("countdown");
+const countdownMessage = document.getElementById("countdownMessage");
+const countdownContainer = document.getElementById("countdownContainer");
+const birthday = new Date(2025, 3, 18, 21, 31, 0).getTime();
+
+// Check if the countdown is already over when the page is loaded
+const now = new Date().getTime();  // Current time in milliseconds
+if (now >= birthday) {
+  countdownContainer.style.display = 'none';  // Hide countdown container
+  showLoadingStatus();
+
+  // Wait for 2 seconds before redirecting
+  setTimeout(() => {
+    window.location.href = "message";  // Redirect to message page
+  }, 2000);  // 2-second delay for loading status
+} else {
+  // Countdown function to handle the countdown logic
+  const x = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = birthday - now;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    if (distance < 0) {
+      clearInterval(x);  // Stop the countdown
+      countdownEl.style.display = 'none'; // Hide the countdown
+const specialMessage = document.getElementById("special-day-message");
+specialMessage.innerText = "A special day has arrived!";
+specialMessage.style.display = "block"; // Show it
+      setTimeout(function() {
+        countdownEl.style.display = 'none';  // Hide countdown
+        showLoadingStatus();  // Show loading status before redirect
+        setTimeout(() => {
+          window.location.href = "message";  // Redirect to message page
+        }, 2000);  // Redirect after 2 seconds
+      }, 2000);  // Delay before showing loading status
+    }
+  }, 1000);
+}
+
+// Show a loading status message when countdown is over
+function showLoadingStatus() {
+  const loadingMessage = document.createElement('div');
+  loadingMessage.textContent = "LOADING....";
+  loadingMessage.style.color = "white";
+  loadingMessage.style.fontSize = "30px";
+  loadingMessage.style.textAlign = "center";  // Ensures the text is centered
+  loadingMessage.style.position = "absolute";  // Positions it in the center of the screen
+  loadingMessage.style.top = "50%";  // Center vertically
+  loadingMessage.style.left = "50%";  // Center horizontally
+  loadingMessage.style.transform = "translate(-50%, -50%)";  // Adjust for exact centering
+  document.body.appendChild(loadingMessage);
+  countdownContainer.remove();  // Removes the countdown container from the DOM
+
+}
+
+
+
+
+
+
+
+
+
+
+    function createShootingStar() {
+    const star = document.createElement('div');
+    star.className = 'shooting-star';
+    star.style.top = Math.random() * window.innerHeight * 1 + 'px';
+    star.style.left = Math.random() * window.innerWidth * 1 + 'px';
+    document.body.appendChild(star);
+
+    // Remove the star after animation to keep DOM clean
+    setTimeout(() => {
+      star.remove();
+    }, 7000);
+  }
+
+  // Launch a shooting star randomly every 5–10 seconds
+  setInterval(() => {
+    createShootingStar();
+  }, Math.random() * 5000 + 5000);
+
+  star.style.top = Math.random() * window.innerHeight + 'px';
+star.style.left = '-100px'; // start slightly off-screen from the left
+
+  </script>
+</body>
+</html>
