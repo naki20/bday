@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BIRTHDAY BUG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      background: #000000;
+      color: #fff;
+      font-family: 'Comic Sans MS', cursive;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      text-align: center;
+      position: relative;
+    }
+
+    .container {
+      padding: 3rem 1rem;
+      display: flex;
+      flex-direction: column;  /* Change to column for vertical stacking */
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .birthday-photo {
+      width: 1000px; /* Increased size */
+      max-width: 90vw;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(104, 76, 76, 0.2);
+    }
+
+    .birthday-message {
+      max-width: 1500px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 1rem;
+      color: #fff;
+      text-align: left;
+    }
+
+    
+
+    h1 {
+      font-size: 8rem;
+      color: #fafafa;
+      animation: pulse 2s infinite;
+      width: 100%;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px #8e7586, 0 0 20px #3d23c2;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .birthday-message {
+        text-align: center;
+      }
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      animation: floatHearts 10s linear infinite;
+      transform: rotate(45deg);
+      opacity: 0.8;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        bottom: -10%;
+        left: calc(50% + (var(--x) * 1px));
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        left: calc(50% + (var(--xEnd) * 1px));
+        opacity: 0;
+      }
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 6px white;
+      animation: sparkleMove 4s infinite ease-in-out;
+    }
+
+    @keyframes sparkleMove {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    /* Style for the clickable cat image */
+    .cat-image {
+      cursor: pointer;
+      width: 150px;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(104, 76, 76, 0.2);
+      margin: 5rem 0; /* Increased the margin to move the cat photo lower */
+    }
+
+    /* Text beside cat image */
+    .click-text {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden audio element -->
+  <audio id="birthday-audio">
+    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container">
+    <h1> Happy Birthday Baieid! </h1>
+
+    <!-- Clickable cat image with "Click on us" text -->
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <img src="images/cat.jpg" alt="Click here" class="cat-image" onclick="playAudio()" />
+      <div class="click-text" onclick="playAudio()">← Click on us</div>
+    </div>
+
+    <img src="/images/chester.jpg" alt="Chester's Birthday" class="birthday-photo" />
+
+    <div class="birthday-message">
+      <p>
+      
+        <H2><center>Here’s to the sweetest, kindest, and most lovely soul I’ve ever met — YOU.</center></H2>
+        <br>  
+        <h3>Another year older, another year wiser, and somehow, even more beautiful than ever.
+        
+        I still remember how unexpectedly everything began… how I fell for your smile, your heart, and the way you made me feel like I was home. We didn’t plan this — we didn’t see it coming — but I truly believe God knew exactly what he was doing. He brought us together because He knew we needed each other to write the love story He had already begun.
+        
+        Thank you, my love, for being my best friend, my safe place, and my little sunshine all in one.  
+        Thank you for showing me what real love is, for reminding me I’m worthy of happiness, and for always being there — even on the days when I don’t feel like myself.
+        
+        I hope this birthday wraps you in laughter, peace, music, and a little bit of magic… because that’s exactly what you give me every day.
+        
+        You’ve made my life brighter in ways I never imagined, and I’m endlessly proud of the person you are and the amazing man you’re becoming.
+        
+        You are my universe, my favorite chapter, and the reason my heart feels so full.</h3>  
+        <h2><br><CENTER>A VERY HAPPY BIRTHDAY TO YOU MY LITTLE BUG 🐞</CENTER><h2>
+        I'm grateful to you more than words could ever explain. And in case you forgot…
+        
+        You already have the best gift ever — ME ⸜(｡˃ ᵕ ˂ )⸝♡ .Therefore,I might have to skip on this one (☞ ͡° ͜ʖ ͡°)☞🎁😏.<br>See you soon and May God shower his blessings upon you.
+        
+        <h2><br><center>----  I love you always ⋆💌ִֶָ⋆｡‧˚ʚ🧸ɞ˚‧｡⋆❤️ྀི  ----<center></h2>
+        
+        
+      </p>
+    </div>
+  </div>
+
+    <!-- Next Button -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <button onclick="goNext()" style="
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        background-color: #8e44ad;
+        color: white;
+        border: none;
+        border-radius: 1rem;
+        cursor: pointer;
+        box-shadow: 0 0 10px #8e44ad;
+      ">
+        Next →
+      </button>
+    </div>
+  
+
+  <!-- Heart and Sparkle animation script -->
+  <script>
+    // Play audio function
+    function playAudio() {
+      const audio = document.getElementById('birthday-audio');
+      audio.play();
+    }
+
+    function goNext() {
+  // Redirect to the next page (you can change this URL)
+  window.location.href = "/stickers";  // Replace with your actual next page route
+}
+
+
+    // Function to start the confetti animation
+    function startConfetti() {
+      console.log("Confetti animation starting...");  // Added log
+
+      confetti({
+        particleCount: 100, // Number of confetti particles
+        angle: 60,  // Angle of the explosion
+        spread: 55,  // How far to spread the confetti
+        origin: { x: 0, y: 0 }, // Origin (start position)
+      });
+
+      confetti({
+        particleCount: 100, 
+        angle: 120, 
+        spread: 55,
+        origin: { x: 1, y: 0 },  // Origin on the right side
+      });
+
+      console.log("Confetti animation triggered!");  // Added log
+    }
+
+    // Trigger confetti when the page is loaded
+    window.onload = function() {
+      // Start confetti animation
+      startConfetti();
+
+      // Play the birthday audio
+      playAudio();
+
+      // Ensure confetti function is loaded and triggered after the window is fully loaded
+      if (typeof confetti === 'function') {
+        console.log("Confetti function is available!");
+      } else {
+        console.error("Confetti function is not available.");
+      }
+    }
+
+    // Heart and Sparkle animation script
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.setProperty('--x', Math.random() * 300 - 150);
+      heart.style.setProperty('--xEnd', Math.random() * 300 - 150);
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = `${Math.random() * 5}s`;
+      heart.style.bottom = '0';
+      document.body.appendChild(heart);
+    }
+
+    for (let i = 0; i < 30; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(sparkle);
+    }
+  </script>
+</body>
+</html>
