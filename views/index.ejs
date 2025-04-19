@@ -25,6 +25,7 @@
 
     .container {
   display: flex;
+
   flex-direction: column;
   align-items: center;
 justify-content: flex-start;
@@ -38,7 +39,7 @@ justify-content: flex-start;
   width: 700px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
   position: absolute; /* Positions it relative to the nearest positioned ancestor */
-  top: 16%; /* Moves the container down slightly */
+  top: 5%; /* Moves the container down slightly */
   left: 50%;
   transform: translateX(-50%); /* Ensures the container is horizontally centered */
 }
@@ -158,15 +159,15 @@ justify-content: flex-start;
   z-index: 0;
 }
 .photo {
-      position: absolute;
-      bottom: 16px;  /* Adjust as per your need */
-      bottom: 20px;  /* Adjust as per your need */
-      left: 50%;
-      transform: translateX(-50%);
-      width: 500px;  /* Adjust image size */
-      height: auto;
-      z-index: -1;  /* To ensure it's behind other content */
-    }
+  position: absolute;
+  bottom: 2px;       /* Adjust as per your need */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;       /* Adjust image size */
+  height: auto;
+  z-index: -1;        /* To ensure it's behind other content */
+}
+
 
     @keyframes twinkle {
       0%, 100% { opacity: 0.2; transform: scale(1); }
@@ -278,7 +279,7 @@ setInterval(createShootingStar, 3000);
     const countdownContainer = document.getElementById("countdownContainer");
     const specialMessage = document.getElementById("special-day-message");
   
-    const birthday = new Date(2025, 3, 19, 23, 55 , 0).getTime(); // 19 April 2025, 17:29
+    const birthday = new Date(2025, 3, 20, 0, 5, 0).getTime(); // 19 April 2025, 17:29
   
     // Check immediately if the special day has already passed
     const now = new Date().getTime();
